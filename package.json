@@ -1,38 +1,70 @@
 {
-  "name": "charts",
-  "version": "0.1.0",
+  "name": "@massimo-cassandro/charts",
+  "version": "1.0.0",
+  "description": "A collections of charts scripts",
+  "main": "./dist/index.js",
+  "esm": "./dist/esm/index.js",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+  "author": "Massimo Cassandro",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/massimo-cassandro/charts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/massimo-cassandro/charts#main"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "BROWSER='Firefox' PORT=3501 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "make-dist": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files && cp -R src/esm dist && cp -R src/js dist",
+    "local server (esm demo)": "python3 -m http.server"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "./node_modules/@massimo-cassandro/linters-config/eslintrc.js"
+    ],
+    "ignorePatterns": [
+      "dist/"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+  "stylelint": {
+    "extends": "@massimo-cassandro/linters-config/stylelintrc.js",
+    "ignoreFiles": [
+      "dist/"
     ]
+  },
+  "keywords": [
+    "charts",
+    "javascript",
+    "react"
+  ],
+  "browserslist": [
+    "last 2 version",
+    "iOS >= 13",
+    "Safari >= 12",
+    "not ie <= 11",
+    "> 3% in IT"
+  ],
+  "files": [
+    "dist/**/*.*"
+  ],
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.19.4",
+    "@massimo-cassandro/linters-config": "^1.1.6",
+    "install": "^0.13.0",
+    "npm": "^8.19.2"
   }
 }

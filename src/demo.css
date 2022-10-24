@@ -1,0 +1,48 @@
+.charts-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+
+.charts-wrapper > div {
+  min-width: 30%;
+  aspect-ratio: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Radial bars */
+.radial-bar-demo {
+  fill: none;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: 2s ease-in-out 1 dash;
+}
+.radial-bar-demo.radial-bar-demo-pattern {
+  stroke: url(#pattern);
+}
+.radial-bar-demo-guide {
+  fill: none;
+  stroke: #efefef;
+  stroke-width: var(--stroke-width);
+}
+.radial-bar-demo-label {
+  font-family: sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  fill: rgb(10, 25, 131);
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 2000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
