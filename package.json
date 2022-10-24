@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/charts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A collections of charts scripts",
   "main": "./dist/index.js",
   "esm": "./dist/esm/index.js",
@@ -52,7 +52,7 @@
     "> 3% in IT"
   ],
   "files": [
-    "dist/**/*.*"
+    "dist/**/*"
   ],
   "dependencies": {
     "react": "^18.2.0",
