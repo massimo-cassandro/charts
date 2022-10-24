@@ -1,8 +1,8 @@
 {
   "name": "@massimo-cassandro/charts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A collections of charts scripts",
-  "main": "./dist/index.js",
+  "main": "./dist/react/index.js",
   "esm": "./dist/esm/index.js",
   "author": "Massimo Cassandro",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "start": "PORT=3501 react-scripts start",
     "start (FF)": "BROWSER='Firefox' PORT=3501 react-scripts start",
     "build": "react-scripts build",
-    "make-dist": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files && cp -R src/esm dist && cp -R src/js dist",
+    "make-dist": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist/react --copy-files && cp -R src/esm dist && cp -R src/js dist",
     "upd version and publish": "node ./update-version.mjs && npm publish",
     "local server (esm demo)": "python3 -m http.server"
   },
