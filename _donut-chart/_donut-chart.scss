@@ -1,0 +1,18 @@
+.donut-chart { // svg
+
+  path {
+    fill: none;
+  }
+
+  .chart-arc {
+    fill: none;
+    &:not([stroke]) {
+      stroke: #666;
+    }
+    stroke-linecap: butt;
+  }
+  .base-circle {
+    fill: none;
+    stroke: #ccc;
+  }
+}
