@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/charts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A collections of charts scripts",
   "main": "./dist/react/index.js",
   "esm": "./dist/esm/index.js",
@@ -21,7 +21,7 @@
     "start (FF)": "BROWSER='Firefox' PORT=3501 react-scripts start",
     "build": "react-scripts build",
     "make-dist": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist/react --copy-files && cp -R src/esm dist && cp -R src/js dist",
-    "upd version and publish": "node ./update-version.mjs && npm publish",
+    "upd version and publish": "node ./node_modules/@massimo-cassandro/dev-utils/src/update-version.mjs && npm publish",
     "local server (esm demo)": "python3 -m http.server"
   },
   "eslintConfig": {
@@ -64,8 +64,7 @@
     "@babel/core": "^7.19.6",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.19.4",
-    "@massimo-cassandro/linters-config": "^1.1.6",
-    "install": "^0.13.0",
-    "npm": "^8.19.2"
+    "@massimo-cassandro/dev-utils": "^1.0.1",
+    "@massimo-cassandro/linters-config": "^1.1.6"
   }
 }
