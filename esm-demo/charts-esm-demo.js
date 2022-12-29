@@ -3,6 +3,7 @@ import {radialBars} from '../src/esm/index.js';
 (() => {
   radialBars({
     container   : document.getElementById('radial-bars-demo'),
+    svgClassName: 'radial-bar-demo-svg-class',
     gap         : 15,
     strokeWidth : 30, // px
     clockwise   : true,

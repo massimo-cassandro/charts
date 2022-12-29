@@ -12,6 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
 //  * @property {element} container - chart wrapper
  * @property {number} gap - space between bars
+ * @property {string} svgClassName - class for svg
  * @property {number} strokeWidth - bar stroke width
  * @property {boolean} clockwise - chart direction
  * @property {string} start- chart start (`top` or `bottom`)
@@ -55,6 +56,7 @@ function RadialBars(props) {
 RadialBars.propTypes = {
   // container             : PropTypes.element.isRequired,
   gap: _propTypes.default.number,
+  svgClassName: _propTypes.default.string,
   strokeWidth: _propTypes.default.number,
   clockwise: _propTypes.default.bool,
   start: _propTypes.default.string,

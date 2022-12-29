@@ -2,6 +2,7 @@
  *
 //  * @property {element} container - chart wrapper
  * @property {number} gap - space between bars
+ * @property {string} svgClassName - class for svg
  * @property {number} strokeWidth - bar stroke width
  * @property {boolean} clockwise - chart direction
  * @property {string} start- chart start (`top` or `bottom`)
@@ -35,7 +36,7 @@ function RadialBars(props) {
 
   React.useEffect(() => {
     radial_bars({
-      ...props, 
+      ...props,
       container: container.current
     });
   }, [props]);
@@ -48,6 +49,7 @@ function RadialBars(props) {
 RadialBars.propTypes = {
   // container             : PropTypes.element.isRequired,
   gap                   : PropTypes.number,
+  svgClassName          : PropTypes.string,
   strokeWidth           : PropTypes.number,
   clockwise             : PropTypes.bool,
   start                 : PropTypes.string,

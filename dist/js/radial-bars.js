@@ -10,6 +10,7 @@ export default function (options = {}) {
 
   const default_options = {
       container             : null, // container element
+      svgClassName          : null,
       gap                   : 5, // px
       strokeWidth           : 20, // px
       clockwise             : true,
@@ -70,7 +71,8 @@ export default function (options = {}) {
         options.circleRadius * 2 + options.strokeWidth
       ].join(' '),
       width   : options.circleRadius * 2,
-      height  : options.circleRadius * 2
+      height  : options.circleRadius * 2,
+      class   : options.svgClassName
     });
 
 
@@ -164,7 +166,7 @@ export default function (options = {}) {
     chart.append(svg);
     options.container.innerHTML = '';
     options.container.appendChild(chart);
-    
+
 
   } catch(e) { //throw error
     console.error( e ); // eslint-disable-line
