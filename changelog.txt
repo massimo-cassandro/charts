@@ -1,2 +1,2 @@
-   1.0.0 | 2022-11-03T10:00:00.000Z | Radial bars chart
-   1.1.0 | 2022-12-29T09:15:54.238Z | SVG class option
+ 2022-11-03T10:00:00.000Z |   1.0.0 | Radial bars chart
+ 2022-12-29T09:15:54.238Z |   1.1.0 | SVG class option
