@@ -23,7 +23,8 @@
     "make-dist": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist/react --copy-files && cp -R src/esm dist && cp -R src/js dist",
     "publish": "npm publish",
     "local server (esm demo)": "python3 -m http.server",
-    "upd version": "node ./node_modules/@massimo-cassandro/dev-utilities/src/update-version.mjs"
+    "upd version": "npx update-version",
+    "upd @m": "npm update @massimo-cassandro/dev-utilities @massimo-cassandro/linters-config"
   },
   "eslintConfig": {
     "extends": [
