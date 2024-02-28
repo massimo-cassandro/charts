@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _react = _interopRequireDefault(require("react"));
+var _react = require("react");
 var _radialBars = _interopRequireDefault(require("../../js/radial-bars"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /**
@@ -39,14 +39,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import styled from 'styled-components';
 
 function RadialBars(props) {
-  const container = _react.default.useRef(null);
-  _react.default.useEffect(() => {
+  const container = (0, _react.useRef)(null);
+  (0, _react.useEffect)(() => {
     (0, _radialBars.default)({
       ...props,
       container: container.current
     });
   }, [props]);
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     ref: container
   });
 }

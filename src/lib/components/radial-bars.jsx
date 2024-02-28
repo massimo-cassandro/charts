@@ -26,15 +26,15 @@
  */
 
 import PropTypes from 'prop-types';
-import React from 'react';
+import { useRef, useEffect } from 'react';
 // import classnames from 'classnames';
 // import styled from 'styled-components';
 import radial_bars from '../../js/radial-bars';
 
 function RadialBars(props) {
-  const container = React.useRef(null);
+  const container = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     radial_bars({
       ...props,
       container: container.current

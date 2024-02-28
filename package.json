@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/charts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A collections of charts scripts",
   "main": "./dist/react/index.js",
   "esm": "./dist/esm/index.js",
