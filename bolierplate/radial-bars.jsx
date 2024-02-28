@@ -1,13 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _propTypes = _interopRequireDefault(require("prop-types"));
-var _react = require("react");
-var _radialBars = _interopRequireDefault(require("../../js/radial-bars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /**
  *
 //  * @property {element} container - chart wrapper
@@ -35,47 +25,52 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @author Massimo Cassandro
  */
 
+import PropTypes from 'prop-types';
+import { useRef, useEffect } from 'react';
 // import classnames from 'classnames';
 // import styled from 'styled-components';
+import { radial_bars } from '@massimo-cassandro/charts';
 
 function RadialBars(props) {
-  const container = (0, _react.useRef)(null);
-  (0, _react.useEffect)(() => {
-    (0, _radialBars.default)({
+  const container = useRef(null);
+
+  useEffect(() => {
+    radial_bars({
       ...props,
       container: container.current
     });
   }, [props]);
-  return /*#__PURE__*/React.createElement("div", {
-    ref: container
-  });
+
+  return (<div ref={container}></div>);
 }
 
 // https://it.reactjs.org/docs/typechecking-with-proptypes.html
 
 RadialBars.propTypes = {
   // container             : PropTypes.element.isRequired,
-  gap: _propTypes.default.number,
-  svgClassName: _propTypes.default.string,
-  strokeWidth: _propTypes.default.number,
-  clockwise: _propTypes.default.bool,
-  start: _propTypes.default.string,
-  circleRadius: _propTypes.default.number,
-  barClassName: _propTypes.default.string,
-  barStrokeLinecap: _propTypes.default.oneOf(['round', 'butt', 'square']),
-  barFill: _propTypes.default.string,
-  labelClassName: _propTypes.default.string,
-  showBarsGuides: _propTypes.default.bool,
-  barGuidesFill: _propTypes.default.string,
-  barGuidesStroke: _propTypes.default.string,
-  barGuidesClassName: _propTypes.default.string,
-  data: _propTypes.default.arrayOf(_propTypes.default.shape({
-    label: _propTypes.default.string,
-    value: _propTypes.default.number.isRequired,
-    stroke: _propTypes.default.string,
-    barClassName: _propTypes.default.string,
-    labelClassName: _propTypes.default.string
-  })).isRequired
+  gap                   : PropTypes.number,
+  svgClassName          : PropTypes.string,
+  strokeWidth           : PropTypes.number,
+  clockwise             : PropTypes.bool,
+  start                 : PropTypes.string,
+  circleRadius          : PropTypes.number,
+  barClassName          : PropTypes.string,
+  barStrokeLinecap      : PropTypes.oneOf(['round', 'butt', 'square']),
+  barFill               : PropTypes.string,
+  labelClassName        : PropTypes.string,
+  showBarsGuides        : PropTypes.bool,
+  barGuidesFill         : PropTypes.string,
+  barGuidesStroke       : PropTypes.string,
+  barGuidesClassName    : PropTypes.string,
+  data                  : PropTypes.arrayOf(
+    PropTypes.shape({
+      label                 : PropTypes.string,
+      value                 : PropTypes.number.isRequired,
+      stroke                : PropTypes.string,
+      barClassName          : PropTypes.string,
+      labelClassName        : PropTypes.string
+    })
+  ).isRequired
 };
 RadialBars.defaultProps = {
   gap: 5,
@@ -84,5 +79,5 @@ RadialBars.defaultProps = {
   start: 'bottom',
   showBarsGuides: false
 };
-var _default = RadialBars;
-exports.default = _default;
+
+export default RadialBars;

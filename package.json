@@ -1,9 +1,7 @@
 {
   "name": "@massimo-cassandro/charts",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "A collections of charts scripts",
-  "main": "./dist/react/index.js",
-  "esm": "./dist/esm/index.js",
   "author": "Massimo Cassandro",
   "license": "MIT",
   "publishConfig": {
@@ -17,29 +15,20 @@
     "url": "git+https://github.com/massimo-cassandro/charts#main"
   },
   "scripts": {
-    "start": "PORT=3501 react-scripts start",
-    "start (FF)": "BROWSER='Firefox' PORT=3501 react-scripts start",
-    "build": "react-scripts build",
-    "make-dist": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist/react --copy-files && cp -R src/esm dist && cp -R src/js dist",
     "publish": "npm publish",
     "local server (esm demo)": "python3 -m http.server",
     "upd version": "npx update-version",
-    "upd @m": "npm update @massimo-cassandro/dev-utilities @massimo-cassandro/linters-config"
+    "upd@m": "npx upd@m"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "./node_modules/@massimo-cassandro/linters-config/eslintrc.js"
     ],
-    "ignorePatterns": [
-      "dist/"
-    ]
+    "ignorePatterns": []
   },
   "stylelint": {
-    "extends": "@massimo-cassandro/linters-config/stylelintrc.js",
-    "ignoreFiles": [
-      "dist/"
-    ]
+    "extends": "@massimo-cassandro/linters-config/stylelintrc.js"
   },
   "keywords": [
     "charts",
@@ -54,19 +43,11 @@
     "> 3% in IT"
   ],
   "files": [
-    "dist/**/*"
+    "src/**/*",
+    "boilerplate/**/*"
   ],
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
-  },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.19.6",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.19.4",
-    "@massimo-cassandro/dev-utilities": "^1.8.3",
-    "@massimo-cassandro/linters-config": "^1.1.6"
+    "@massimo-cassandro/dev-utilities": "^1.23.4",
+    "@massimo-cassandro/linters-config": "^1.6.1"
   }
 }
