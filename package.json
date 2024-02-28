@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/charts",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A collections of charts scripts",
   "author": "Massimo Cassandro",
   "license": "MIT",
@@ -44,7 +44,8 @@
   ],
   "files": [
     "src/**/*",
-    "boilerplate/**/*"
+    "boilerplate/**/*",
+    "index.js"
   ],
   "devDependencies": {
     "@massimo-cassandro/dev-utilities": "^1.23.4",
