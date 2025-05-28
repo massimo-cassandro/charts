@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/charts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "SVG charts",
   "author": "Massimo Cassandro",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "upd version": "npx update-version",
     "upd@m": "npx upd@m",
     "colors css to js": "cd ./colors && node css-to-js.mjs",
-    "publish": "npm publish"
+    "npm-publish": "npm publish"
   },
   "keywords": [
     "charts",
