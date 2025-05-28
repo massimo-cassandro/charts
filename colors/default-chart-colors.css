@@ -1,0 +1,25 @@
+/*
+  file per la definizione dei colori standard da usare nei grafici;
+  è in formato css per semplificare la definizione dei colori,
+
+  L'ordine delle proprietà è quello con cui vengono utilizzati i colori
+
+  Per il loro utilizzo i colori vanno trasformagti in oggetto js utilizzando
+  lo script presente in questa cartella
+*/
+:root {
+  --azzurro          : #56a1e5;
+  --rosa-scuro       : #fc1484;
+  --giallo           : #f5a623;
+  --verde-acqua      : #6dbebf;
+  --lavanda          : #9894fd;
+  --carminio         : #af373e;
+  --verde-elettrico  : #54f25a;
+  --verde-blu        : #167bac;
+  --acqua            : #00e6fb;
+  --blu-elettrico    : #0b16e9;
+  --oliva            : #9dbf6d;
+  --viola-elettrico  : #c614fc;
+  --lime             : #d9f440;
+  --rosa-chiaro      : #fea4f2;
+}
