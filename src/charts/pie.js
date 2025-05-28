@@ -41,7 +41,7 @@ export function pie({
   const animazione = false;
 
   // colori forniti o di default
-  colors??= Object.values(this.config.colors);
+  colors??= this.config.colors;
 
   const svgCanvas = this.createSvgCanvas(container);
 
