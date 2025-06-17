@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 376 250">
+  <line x1="0" y1="21" x2="376" y2="21" stroke-width="1" stroke="#ff0066"></line><text font-family="Arial Black" font-size="16" dominant-baseline="middle" x="81.78289794921875" y="34.30435562133789" fill="#000000" text-anchor="end">Label 1</text>
+  <line x1="0" y1="73" x2="376" y2="73" stroke-width="1" stroke="#ff0066"></line><text font-family="Arial Black" font-size="16" dominant-baseline="middle" x="81.78289794921875" y="86.30435562133789" fill="#000000" text-anchor="end">B</text>
+  <line x1="0" y1="125" x2="376" y2="125" stroke-width="1" stroke="#ff0066"></line><text font-family="Arial Black" font-size="16" dominant-baseline="middle" x="81.78289794921875" y="138.3043556213379" fill="#000000" text-anchor="end">Label 3</text>
+  <line x1="0" y1="177" x2="376" y2="177" stroke-width="1" stroke="#ff0066"></line><text font-family="Arial Black" font-size="16" dominant-baseline="middle" x="81.78289794921875" y="190.3043556213379" fill="#000000" text-anchor="end">Qualcosa</text>
+  <line x1="0" y1="229" x2="376" y2="229" stroke-width="1" stroke="#ff0066"></line><text font-family="Arial Black" font-size="16" dominant-baseline="middle" x="81.78289794921875" y="242.3043556213379" fill="#000000" text-anchor="end">E</text>
+  <line x1="81.78289794921875" y1="0" x2="81.78289794921875" y2="250" stroke-width="2" stroke="#4faa0d"></line>
+  <rect width="234.5143" height="38" x="89.7829" y="2" fill="#2387e2" rx="5" ry="5" stroke-width="4" stroke="#333333"></rect>
+  <rect width="35.7524" height="38" x="89.7829" y="54" fill="#fc1484" rx="5" ry="5" stroke-width="4" stroke="#333333"></rect>
+  <rect width="95.3809" height="38" x="89.7829" y="106" fill="#f5a623" rx="5" ry="5" stroke-width="4" stroke="#333333"></rect>
+  <rect width="184.8238" height="38" x="89.7829" y="158" fill="#6dbebf" rx="5" ry="5" stroke-width="4" stroke="#333333"></rect>
+  <rect width="282.2171" height="38" x="89.7829" y="210" fill="#9894fd" rx="5" ry="5" stroke-width="4" stroke="#333333"></rect>
+</svg>

@@ -1,8 +1,8 @@
-// Documento generato da `src/app/charts/colors/default-chart-colors.css`.
+// Documento generato da `default-chart-colors.css`.
 // Non editare
 
 export const default_colors = {
-  azzurro: '#56a1e5',
+  azzurro: '#2387e2',
   rosaScuro: '#fc1484',
   giallo: '#f5a623',
   verdeAcqua: '#6dbebf',

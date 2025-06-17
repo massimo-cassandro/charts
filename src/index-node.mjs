@@ -1,4 +1,5 @@
 import { pie } from './charts/pie.js';
+import { bars } from './charts/bars.js';
 import { default_cfg } from './utils/config-default.js';
 import { utils } from './utils/utilities.js';
 import { createSvgCanvasNode } from './utils/create-svg-canvas-node.mjs';
@@ -23,3 +24,4 @@ export class mChart {
 mChart.prototype.utils = utils;
 mChart.prototype.createSvgCanvas = createSvgCanvasNode;
 mChart.prototype.pie = pie;
+mChart.prototype.bars = bars;

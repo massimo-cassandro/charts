@@ -2,6 +2,17 @@
 
 export function createSvgCanvasExternalSVGjs(container) {
 
-  const svgCanvas = SVG().addTo(container);
-  return svgCanvas;
+  try {
+
+    if(!container) {
+      throw 'Missing container';
+    }
+
+    const svgCanvas = SVG().addTo(container);
+    return svgCanvas;
+
+  } catch(e) {
+    console.error( 'Charts → createSvgCanvasExternalSVGjs', e ); // eslint-disable-line
+  }
+
 }
