@@ -1,5 +1,6 @@
 import { pie } from './charts/pie.js';
 import { bars } from './charts/bars.js';
+import { radialBars } from './charts/radial-bars.js';
 import { default_cfg } from './utils/config-default.js';
 import { utils } from './utils/utilities.js';
 import { createSvgCanvas } from './utils/create-svg-canvas.js';
@@ -20,9 +21,10 @@ export class mChart {
 
 }
 
-// mChart.prototype.fontsReady = await document.fonts.ready;
+// await document.fonts.ready;
 
 mChart.prototype.utils = utils;
 mChart.prototype.createSvgCanvas = createSvgCanvas;
 mChart.prototype.pie = pie;
 mChart.prototype.bars = bars;
+mChart.prototype.radialBars = radialBars;
