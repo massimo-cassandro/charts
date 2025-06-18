@@ -2,8 +2,11 @@
 
 export function bars({
 
-  /** container (selettore o elementio DOM), se null viene restituito il codice SVG */
+  /** container (selettore o elemento DOM), se null viene restituito il codice SVG */
   container = null,
+
+  /** svuota il container prima del rendering */
+  emptyContainer = true,
 
   /**
     larghezza e altezza del grafico (px),
@@ -120,6 +123,10 @@ export function bars({
     // container element
     const  containerElement = this.utils.getElementFromContainer(container),
       toRight = barsDirection === 'right';
+
+    if(containerElement && emptyContainer) {
+      containerElement.innerHTML = '';
+    }
 
     // dimensioni del grafico
     width = width || (containerElement? this.utils.truncateDecimal(containerElement.clientWidth) : null);
