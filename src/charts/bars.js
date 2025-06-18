@@ -1,6 +1,6 @@
 // horizontal bars
 
-export async function bars({
+export function bars({
 
   /** container (selettore o elementio DOM), se null viene restituito il codice SVG */
   container = null,
@@ -100,9 +100,6 @@ export async function bars({
   /** frame per secondo dell'animazione */ // NB non attivo
   // fps = 60
 } = {}) {
-
-
-  await document.fonts.ready;
 
   try {
 
@@ -332,6 +329,9 @@ export async function bars({
 
       barY += barsHeight + barsGap + barsStrokeWidth;
     });
+
+
+    return svgCanvas.svg();
 
 
   } catch(e) {

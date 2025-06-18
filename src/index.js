@@ -20,6 +20,7 @@ export class mChart {
 
 }
 
+// mChart.prototype.fontsReady = await document.fonts.ready;
 
 mChart.prototype.utils = utils;
 mChart.prototype.createSvgCanvas = createSvgCanvas;
