@@ -5,7 +5,7 @@ export const default_cfg = {
   colors: Object.values(default_colors),
 
   // i valori commentati sono quelli di default
-  // se non vanno modificati è inutile i postarli
+  // se non vanno modificati è inutile impostarli
   fonts: {
     // family: 'sans-serif',
     // size: 14,

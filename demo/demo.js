@@ -1,5 +1,5 @@
 import { mChart } from '../src/index-external-svgjs.js';
-import { labels_icons } from './labels-icons.js';
+// import { labels_icons } from './labels-icons.js';
 
 const mc = new mChart;
 
@@ -24,6 +24,10 @@ mc.bars({
   barsStrokeWidth: 4,
   barsStrokeColor: '#333',
   // barsDirection: 'right', // default
+  // textBarsGap: 8,
+  // barsGap: 10,
+  // barsHeight: 40,
+  // barsCornerRadius: 5,
   labelsFont: {
     family: 'Roboto Flex',
     size: 16,

@@ -1,5 +1,7 @@
 // horizontal bars
 
+// TODO title
+
 export function bars({
 
   /** container (selettore o elemento DOM), se null viene restituito il codice SVG */
@@ -66,6 +68,9 @@ export function bars({
 
   /** direzione della barra */
   barsDirection = 'right', // right || left
+
+  /** larghezza minima labels */
+  minLabelslWidth = 0,
 
   /** spazio tra un'etichetta di testo e il grafico */
   textBarsGap = 8,
@@ -257,7 +262,7 @@ export function bars({
           'text-anchor': toRight? 'end' : null
         });
 
-        max_labels_width = Math.max(max_labels_width, bbox.width);
+        max_labels_width = Math.max(max_labels_width, bbox.width, minLabelslWidth);
 
 
         labels_elements.push(labelEl); // per il riposizionamento X successivo
