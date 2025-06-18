@@ -118,7 +118,7 @@ export function bars({
     }
 
     // container element
-    const containerElement = (container && typeof container === 'string')? document.querySelector(container) : null,
+    const  containerElement = this.utils.getElementFromContainer(container),
       toRight = barsDirection === 'right';
 
     // dimensioni del grafico
@@ -330,8 +330,9 @@ export function bars({
       barY += barsHeight + barsGap + barsStrokeWidth;
     });
 
-
-    return svgCanvas.svg();
+    if(!container) {
+      return svgCanvas.svg();
+    }
 
 
   } catch(e) {

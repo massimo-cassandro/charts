@@ -158,7 +158,9 @@ export function pie({
     });
   }
 
-  return svgCanvas.svg();
+  if(!container) {
+    return svgCanvas.svg();
+  }
 }
 
 

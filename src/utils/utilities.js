@@ -84,6 +84,19 @@ utils.calcAttrD = (options) => { // same options of calcArcCoords
 };
 
 
+utils.getElementFromContainer = container => {
+  let containerElement = null;
+
+  if(typeof container === 'string') {
+    containerElement = document.querySelector(container);
+
+  } else if (container instanceof Element) {
+    containerElement = container;
+  }
+
+  return containerElement;
+};
+
 
 export { utils };
 
