@@ -1,4 +1,9 @@
-export function pie({
+import { chart_init } from '../utils/init.js';
+
+export async function pie({
+
+  /** modalità di caricamento di svg.js, non impostare per utilizzare il default definito in init */
+  svgjs_mode = null,
 
   /** container (selettore o elementio DOM), se null viene restituito il codice SVG */
   container = null,
@@ -40,10 +45,12 @@ export function pie({
   // TODO animazione
   const animazione = false;
 
-  // colori forniti o di default
-  colors??= this.config.colors;
+  const chartUtils = await chart_init(svgjs_mode);
 
-  const svgCanvas = this.createSvgCanvas(container);
+  // colori forniti o di default
+  colors??= chartUtils.defaults.colors;
+
+  const svgCanvas = chartUtils.createSvgCanvas(container);
 
 
   const isDonut = innerRadius != null
@@ -96,8 +103,8 @@ export function pie({
       }
 
       // coordinate inizio e fine
-      parametri.start = this.utils.polarToCartesian(angolo_inizio, circleCenter, radius);
-      parametri.end = this.utils.polarToCartesian(parametri.angolo_fine, circleCenter, radius);
+      parametri.start = chartUtils.polarToCartesian(angolo_inizio, circleCenter, radius);
+      parametri.end = chartUtils.polarToCartesian(parametri.angolo_fine, circleCenter, radius);
 
       parametri.perc = perc; // serve per eliminare eventuali valori nulli
       parametri.angolo_inizio = angolo_inizio; // per debug
@@ -149,7 +156,7 @@ export function pie({
     pieSlices.forEach(params => {
       sectionsGroup.path(generateAttrD(params))
         .attr({
-          ...(useClasses? {class: this.utils.classnames('mChart-pie-section', params.className)} : {}),
+          ...(useClasses? {class: chartUtils.classnames('mChart-pie-section', params.className)} : {}),
           ...(isDonut
             ? {'stroke-width': donutWidth, stroke: params.color, fill: 'none'}
             : {fill: params.color}

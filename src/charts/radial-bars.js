@@ -2,13 +2,16 @@
 
 // TODO implementare attributi in modo che il risultato possa essere utilizzato anche senza classi css esterne
 
+// TODO reimpostare i parametri come nelle altre funzioni
 // TODO legend
 // TODO radial grid
 // TODO svg.js
 // TODO versione node
 // TODO versione ext svg.js
 
-export function radialBars(options = {}) {
+import { chart_init } from '../utils/init.js';
+
+export async function radialBars(options = {}) {
 
   const default_options = {
       container             : null, // container element
@@ -50,6 +53,8 @@ export function radialBars(options = {}) {
   options.data = (options.data?? []).map(item => { return {...bars_data_defaults, ...item}; });
 
   options = {...default_options, ...options};
+
+  const chartUtils = await chart_init(/* svgjs_mode */);
 
   try {
 
@@ -127,7 +132,7 @@ export function radialBars(options = {}) {
         fill              : options.barFill?? 'none',
         'stroke-linecap'  : options.barStrokeLinecap,
         stroke            : item.stroke,
-        d                 : this.utils.calcAttrD({
+        d                 : chartUtils.calcAttrD({
           start_angle   : start_angle,
           percentage    : item.value / max_value,
           max_arc       : 270,

@@ -1,7 +1,8 @@
-import { mChart } from '../src/index-external-svgjs.js';
-// import { labels_icons } from './labels-icons.js';
+import { bars, pie, signalBars } from '../src/index.js';
 
-const mc = new mChart;
+const base_cfg = {
+  svgjs_mode: 'global'
+};
 
 const testValues = {
   'Label 1': 120,
@@ -11,19 +12,17 @@ const testValues = {
   'E': 144
 };
 
-mc.pie({container: '#pie', radius: 50, values: Object.values(testValues)});
-mc.pie({container: '#donut', innerRadius: 20, radius: 50, values: Object.values(testValues)});
+pie({...base_cfg, container: '#pie', radius: 50, values: Object.values(testValues)});
+pie({...base_cfg, container: '#donut', innerRadius: 20, radius: 50, values: Object.values(testValues)});
 
-mc.bars({
-  container: '#bars',
-  height: 250,
+
+const barsOpts = {
+  ...base_cfg,
   values: Object.values(testValues),
   labels: Object.keys(testValues),
   showValues: true,
-  showValuesAs: 'percent',
   barsStrokeWidth: 4,
   barsStrokeColor: '#333',
-  // barsDirection: 'right', // default
   // textBarsGap: 8,
   // barsGap: 10,
   // barsHeight: 40,
@@ -44,68 +43,71 @@ mc.bars({
     // variant: 'normal',
     weight: 400
   },
+};
+bars({
+  ...barsOpts,
+  container: '#bars',
+  height: 250,
+  showValuesAs: 'percent',
+  // barsDirection: 'right', // default
+
 });
-
-
-mc.bars({
+bars({
+  ...barsOpts,
   container: '#bars-to-left',
   height: 'auto',
-  values: Object.values(testValues),
-  labels: Object.keys(testValues),
-  showValues: true,
   showValuesAs: 'euro',
-  barsStrokeWidth: 4,
-  barsStrokeColor: '#333',
   barsDirection: 'left',
-  labelsFont: {
-    family: 'Roboto',
-    size: 16,
+});
+
+const signalBarsOpts = {
+  ...base_cfg,
+  height: 250,
+  ranges: [1,2,3,4,5],
+  labelFont: {
+    family: 'Roboto Flex',
+    size: 72,
     // stretch: 'normal',
-    // style: 'normal',
+    // style: 'italic',
     // variant: 'normal',
     weight: 700
   },
-  valuesFont: {
-    family: 'Roboto',
-    size: 14,
-    // stretch: 'normal',
-    style: 'italic',
-    // variant: 'normal',
-    weight: 400
-  },
-});
-
-/*
-mc.bars({
-  container: '#bars-w-icons',
-  height: 250,
-  values: Object.values(testValues),
-  labels: Object.values(labels_icons),
-  labelsAreIcons: true,
-  showValues: true,
-  showValuesAs: 'numbers',
-  showValuesFractionDigits: 0,
+  labelFill: '#051b52',
   barsStrokeWidth: 4,
-  barsStrokeColor: '#333',
-  // barsDirection: 'right', // default
-  labelsFont: {
-    family: 'Roboto Flex',
-    size: 16,
-    // stretch: 'normal',
-    // style: 'normal',
-    // variant: 'normal',
-    weight: 800
-  },
-  valuesFont: {
-    family: 'Roboto Flex',
-    size: 14,
-    // stretch: 'normal',
-    style: 'italic',
-    // variant: 'normal',
-    weight: 400
-  },
+  barsStrokeColor: '#213c7f',
+  barsOnFillColor: '#4765b076',
+  barsOffFillColor: '#fff',
+};
+signalBars({
+  ...signalBarsOpts,
+  container: '#signalBars1',
+  height: 150,
+  value: 3.63,
+  label: null,
+  labelPosition: 'right',
 });
- */
+signalBars({
+  ...signalBarsOpts,
+  // height: 150,
+  container: '#signalBars2',
+  value: 3.33,
+  // maxBarWidth: 40,
+  barsRelativeCornerRadius: .5,
+  label: ''
+});
+signalBars({
+  ...signalBarsOpts,
+  container: '#signalBars3',
+  // value: 2.83,
+  label: 'Tra 1 e 2',
+  labelPosition: 'bottom',
+  maxBarWidth: 40,
+  barsStrokeWidth: 0,
+  barsOnFillColor: '#0c811c',
+  barsOffFillColor: '#c00',
+  activeBarIndex: 0,
+  svgClassName: 'test-class'
+});
 
 
 // import {radialBars} from '../src/esm/index.js';

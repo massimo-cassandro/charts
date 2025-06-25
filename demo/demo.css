@@ -1,3 +1,6 @@
+body {
+  font-family: sans-serif;
+}
 .charts-wrapper {
   /* display: flex;
   flex-flow: row wrap;
@@ -18,18 +21,36 @@
 
 
 .charts-wrapper > div {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
   padding: 5px;
   border: 1px solid #ccc;
+
+  &::before {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    display: block;
+    font-size: .75rem;
+    color: #666;
+    text-transform: uppercase;
+    content: attr(title);
+  }
 }
 
-/* svg {
+
+/*
+svg {
   outline: 1px dotted #f00;
 }
 
 text {
   outline: 1px dotted rgb(28, 86, 246);
+}
+
+g {
+  outline: 1px dotted rgb(6, 101, 16);
 } */

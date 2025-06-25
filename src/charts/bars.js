@@ -2,7 +2,12 @@
 
 // TODO title
 
-export function bars({
+import { chart_init } from '../utils/init.js';
+
+export async function bars({
+
+  /** modalità di caricamento di svg.js, non impostare per utilizzare il default definito in init */
+  svgjs_mode = null,
 
   /** container (selettore o elemento DOM), se null viene restituito il codice SVG */
   container = null,
@@ -107,9 +112,11 @@ export function bars({
 
   /** frame per secondo dell'animazione */ // NB non attivo
   // fps = 60
-} = {}) {
+}) {
 
   try {
+
+    const chartUtils = await chart_init(svgjs_mode);
 
     if(values.filter(v => isNaN(v)).length) {
       throw 'There are non-numeric values';
@@ -126,7 +133,7 @@ export function bars({
     }
 
     // container element
-    const  containerElement = this.utils.getElementFromContainer(container),
+    const  containerElement = chartUtils.getElementFromContainer(container),
       toRight = barsDirection === 'right';
 
     if(containerElement && emptyContainer) {
@@ -134,8 +141,8 @@ export function bars({
     }
 
     // dimensioni del grafico
-    width = width || (containerElement? this.utils.truncateDecimal(containerElement.clientWidth) : null);
-    height = height || (containerElement? this.utils.truncateDecimal(containerElement.clientHeight) : null);
+    width = width || (containerElement? chartUtils.truncateDecimal(containerElement.clientWidth) : null);
+    height = height || (containerElement? chartUtils.truncateDecimal(containerElement.clientHeight) : null);
 
 
     if(barsGap == null) {
@@ -165,11 +172,11 @@ export function bars({
     }
 
     // colori forniti o di default
-    colors??= this.config.colors;
+    colors??= chartUtils.defaults.colors;
 
     // fonts
-    labelsFont = {...this.config.fonts, ...(labelsFont??{}) };
-    valuesFont = {...this.config.fonts, ...(valuesFont??{}) };
+    labelsFont = {...chartUtils.defaults.fonts, ...(labelsFont??{}) };
+    valuesFont = {...chartUtils.defaults.fonts, ...(valuesFont??{}) };
 
     // somma di tutti i valori per calcolo persentuale
     const totValues = values.reduce((tot, current) => tot + current, 0);
@@ -216,7 +223,7 @@ export function bars({
       });
     }
 
-    const svgCanvas = this.createSvgCanvas(container);
+    const svgCanvas = chartUtils.createSvgCanvas(container); //.size(width, height);
     svgCanvas.viewbox(0, 0, width, height);
 
     // =>> etichette (labels) & etichette valori (valueLabels)
@@ -239,8 +246,8 @@ export function bars({
 
         const bbox = labelEl.bbox();
 
-        labelEl.move(labelX, this.utils.truncateDecimal(labelY - (bbox.height/2)))
-          .attr({textLength: this.utils.truncateDecimal(bbox.width), lengthAdjust:'spacingAndGlyphs'});
+        labelEl.move(labelX, chartUtils.truncateDecimal(labelY - (bbox.height/2)))
+          .attr({textLength: chartUtils.truncateDecimal(bbox.width), lengthAdjust:'spacingAndGlyphs'});
 
         return [bbox, labelEl];
       };
@@ -290,7 +297,7 @@ export function bars({
 
     // =>> riposizionamento `labels_elements` (prima dell'aggiunta di `textBarsGap`)
     labels_elements.forEach(l => {
-      l.ax(this.utils.truncateDecimal(toRight? max_labels_width : width - max_labels_width));
+      l.ax(chartUtils.truncateDecimal(toRight? max_labels_width : width - max_labels_width));
     });
 
 
@@ -310,11 +317,11 @@ export function bars({
     let barY = barsStrokeWidth / 2;
     values.forEach((v, idx) => {
 
-      const barWidth = this.utils.truncateDecimal((v / maxBarsValue * maxBarsWidth) - barsStrokeWidth),
+      const barWidth = chartUtils.truncateDecimal((v / maxBarsValue * maxBarsWidth) - barsStrokeWidth),
         barX = toRight? max_labels_width : width - barWidth - max_labels_width,
         bar = svgCanvas.rect({
-          x: this.utils.truncateDecimal(barX),
-          y: this.utils.truncateDecimal(barY),
+          x: chartUtils.truncateDecimal(barX),
+          y: chartUtils.truncateDecimal(barY),
           width: barWidth,
           height: barsHeight,
           fill: colors[idx]?? '#ccc',
@@ -332,7 +339,7 @@ export function bars({
       // =>> riposizionamento value_labels_elements
       const thisValueLabel = value_labels_elements[idx];
       if(thisValueLabel) {
-        thisValueLabel.ax(this.utils.truncateDecimal(toRight
+        thisValueLabel.ax(chartUtils.truncateDecimal(toRight
           ? max_labels_width + barWidth + textBarsGap
           : barX - textBarsGap
         ));

@@ -1,6 +1,6 @@
 /* globals SVG */
 
-export function createSvgCanvasExternalSVGjs(container) {
+export function createSvgCanvasGlobalSVGjs(container) {
 
   try {
 
@@ -12,7 +12,7 @@ export function createSvgCanvasExternalSVGjs(container) {
     return svgCanvas;
 
   } catch(e) {
-    console.error( 'Charts → createSvgCanvasExternalSVGjs', e ); // eslint-disable-line
+    console.error( 'Charts → createSvgCanvasGlobalSVGjs', e ); // eslint-disable-line
   }
 
 }
