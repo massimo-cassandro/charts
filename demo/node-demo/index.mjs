@@ -100,9 +100,15 @@ const signal_bars_svg = signalBars({
   },
   labelFill: '#051b52',
   barsStrokeWidth: 4,
-  barsStrokeColor: '#213c7f',
-  barsOnFillColor: '#4765b076',
-  barsOffFillColor: '#fff',
+  barsOnAttr: {
+    fill: '#0b3191',
+    'fill-opacity': 0.5,
+    stroke: '#0a1b45'
+  },
+  barsOffAttr: {
+    fill: '#fff',
+    stroke: '#0a1b45'
+  },
   value: 3.63,
   label: null,
   labelPosition: 'right',

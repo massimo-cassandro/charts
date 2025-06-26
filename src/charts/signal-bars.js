@@ -89,11 +89,24 @@ export function signalBars({
   */
   barsRelativeCornerRadius = null,
 
-  /** spessore e colore traccia (0 per non visualizzare) */
+  /**
+    attributi barre attive e disattive
+    ad esclusione di `stroke-width` da gestire separatamente con barsStrokeWidth per esigenze di calcolo
+    vedi https://svgjs.dev/docs/3.2/manipulating/#attributes
+  */
   barsStrokeWidth = 3,
-  barsStrokeColor = '#000',
-  barsOnFillColor = '#000',
-  barsOffFillColor = '#ddd',
+  barsOnAttr = {
+    fill: '#000'
+    // ,'fill-opacity': 0.5
+    ,stroke: '#000'
+    ,'stroke-width': 3
+  },
+  barsOffAttr = {
+    fill: '#000'
+    // ,'fill-opacity': 0.5
+    ,stroke: '#fff'
+    ,'stroke-width': 3
+  },
 
   /** seimpostato, il valore massimo della larghezz delle barre */
   maxBarWidth = null,
@@ -257,7 +270,7 @@ export function signalBars({
         y: chartUtils.truncateDecimal(barY),
         width: barWidth,
         height: barHeight,
-        fill: barIsOn? barsOnFillColor : barsOffFillColor,
+        ...(barIsOn? barsOnAttr : barsOffAttr),
       });
 
       if(barsRelativeCornerRadius != null || barsCornerRadius != null) {
@@ -267,8 +280,8 @@ export function signalBars({
         bar.radius(barsCornerRadius);
       }
 
-      if( barsStrokeWidth > 0 && barsStrokeColor) {
-        bar.stroke({ color: barsStrokeColor, width: barsStrokeWidth });
+      if( barsStrokeWidth > 0 ) {
+        bar.stroke({ width: barsStrokeWidth });
       }
 
       if(barOnClassName && barIsOn) {

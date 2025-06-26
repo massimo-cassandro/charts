@@ -87,12 +87,15 @@ utils.calcAttrD = (options) => { // same options of calcArcCoords
 utils.getElementFromContainer = container => {
   let containerElement = null;
 
-  if(typeof container === 'string') {
-    containerElement = document.querySelector(container);
+  if(container) {
+    if(typeof container === 'string') {
+      containerElement = document.querySelector(container);
 
-  } else if (container instanceof Element) {
-    containerElement = container;
+    } else if (container instanceof Element) {
+      containerElement = container;
+    }
   }
+
 
   return containerElement;
 };
@@ -7911,7 +7914,7 @@ function chart_init(customUtils = {}) {
 // horizontal bars
 
 
-async function bars({
+function bars({
 
   /**
     variabili e funzioni condivise importate da '../utils/init.js' (vedi)
@@ -8273,7 +8276,7 @@ async function bars({
 
 }
 
-async function pie({
+function pie({
 
   /**
     variabili e funzioni condivise importate da '../utils/init.js' (vedi)
@@ -8528,7 +8531,7 @@ async function pie({
  */
 
 
-async function signalBars({
+function signalBars({
 
   /**
     variabili e funzioni condivise importate da '../utils/init.js' (vedi)
@@ -8608,11 +8611,24 @@ async function signalBars({
   */
   barsRelativeCornerRadius = null,
 
-  /** spessore e colore traccia (0 per non visualizzare) */
+  /**
+    attributi barre attive e disattive
+    ad esclusione di `stroke-width` da gestire separatamente con barsStrokeWidth per esigenze di calcolo
+    vedi https://svgjs.dev/docs/3.2/manipulating/#attributes
+  */
   barsStrokeWidth = 3,
-  barsStrokeColor = '#000',
-  barsOnFillColor = '#000',
-  barsOffFillColor = '#ddd',
+  barsOnAttr = {
+    fill: '#000'
+    // ,'fill-opacity': 0.5
+    ,stroke: '#000'
+    ,'stroke-width': 3
+  },
+  barsOffAttr = {
+    fill: '#000'
+    // ,'fill-opacity': 0.5
+    ,stroke: '#fff'
+    ,'stroke-width': 3
+  },
 
   /** seimpostato, il valore massimo della larghezz delle barre */
   maxBarWidth = null,
@@ -8776,7 +8792,7 @@ async function signalBars({
         y: chartUtils.truncateDecimal(barY),
         width: barWidth,
         height: barHeight,
-        fill: barIsOn? barsOnFillColor : barsOffFillColor,
+        ...(barIsOn? barsOnAttr : barsOffAttr),
       });
 
       if(barsRelativeCornerRadius != null || barsCornerRadius != null) {
@@ -8786,8 +8802,8 @@ async function signalBars({
         bar.radius(barsCornerRadius);
       }
 
-      if( barsStrokeWidth > 0 && barsStrokeColor) {
-        bar.stroke({ color: barsStrokeColor, width: barsStrokeWidth });
+      if( barsStrokeWidth > 0 ) {
+        bar.stroke({ width: barsStrokeWidth });
       }
 
       if(barOnClassName && barIsOn) {
@@ -8808,7 +8824,7 @@ async function signalBars({
 
 
   } catch(e) {
-    console.error( 'Charts → bars', e ); // eslint-disable-line
+    console.error( 'Charts → signalBars', e ); // eslint-disable-line
   }
 
 }

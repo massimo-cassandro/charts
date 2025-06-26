@@ -72,9 +72,15 @@ const signalBarsOpts = {
   },
   labelFill: '#051b52',
   barsStrokeWidth: 4,
-  barsStrokeColor: '#213c7f',
-  barsOnFillColor: '#4765b076',
-  barsOffFillColor: '#fff',
+  barsOnAttr: {
+    fill: '#4664af',
+    opacity: 0.5,
+    stroke: '#213c7f'
+  },
+  barsOffAttr: {
+    fill: '#fff',
+    stroke: '#213c7f'
+  }
 };
 signalBars({
   ...signalBarsOpts,
@@ -101,8 +107,12 @@ signalBars({
   labelPosition: 'bottom',
   maxBarWidth: 40,
   barsStrokeWidth: 0,
-  barsOnFillColor: '#0c811c',
-  barsOffFillColor: '#c00',
+  barsOnAttr: {
+    fill: '#0c811c',
+  },
+  barsOffAttr: {
+    fill: '#c00',
+  },
   activeBarIndex: 0,
   svgClassName: 'test-class'
 });
