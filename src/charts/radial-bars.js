@@ -9,9 +9,9 @@
 // TODO versione node
 // TODO versione ext svg.js
 
-import { chart_init } from '../utils/init.js';
+import { utils } from '../utils/utilities';
 
-export async function radialBars(options = {}) {
+export function radialBars(options = {}) {
 
   const default_options = {
       container             : null, // container element
@@ -54,7 +54,7 @@ export async function radialBars(options = {}) {
 
   options = {...default_options, ...options};
 
-  const chartUtils = await chart_init(/* svgjs_mode */);
+  // const chartUtils = await chart_init('esm');
 
   try {
 
@@ -132,7 +132,7 @@ export async function radialBars(options = {}) {
         fill              : options.barFill?? 'none',
         'stroke-linecap'  : options.barStrokeLinecap,
         stroke            : item.stroke,
-        d                 : chartUtils.calcAttrD({
+        d                 : utils.calcAttrD({
           start_angle   : start_angle,
           percentage    : item.value / max_value,
           max_arc       : 270,

@@ -15,3 +15,4 @@
 2025-06-18T14:17:36.185Z |            2.1.5 | bars: minLabelslWidth option
 2025-06-24T11:37:47.080Z |            2.2.0 | signal bars
 2025-06-25T14:25:19.815Z |            2.3.0 | removed the main class in favor of single exported functions to improve tree shaking
+2025-06-26T10:05:40.685Z |            2.3.1 | Fix

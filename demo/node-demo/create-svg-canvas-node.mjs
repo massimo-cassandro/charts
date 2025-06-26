@@ -1,6 +1,9 @@
 import { createSVGWindow } from 'svgdom';
 import { SVG, registerWindow } from '@svgdotjs/svg.js';
 
+// "@svgdotjs/svg.js": "^3.2.4",
+//     "svgdom": "^0.1.21"
+
 
 // https://svgjs.dev/docs/3.2/getting-started/
 // https://github.com/svgdotjs/svgdom#readme

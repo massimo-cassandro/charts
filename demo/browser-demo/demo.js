@@ -1,8 +1,6 @@
-import { bars, pie, signalBars } from '../src/index.js';
+import { bars, pie, signalBars } from './charts-demo.js';
 
-const base_cfg = {
-  svgjs_mode: 'global'
-};
+const base_cfg = {};
 
 const testValues = {
   'Label 1': 120,

@@ -1,9 +1,14 @@
 import { chart_init } from '../utils/init.js';
 
-export async function pie({
+export function pie({
 
-  /** modalità di caricamento di svg.js, non impostare per utilizzare il default definito in init */
-  svgjs_mode = null,
+  /**
+    variabili e funzioni condivise importate da '../utils/init.js' (vedi)
+    Può essere parzialmente o completamente integrata con funzioni specifiche
+    (ad esempio per cambiare la modailità di implemntazione di svg.js, vedi demo).
+    Lasciare come oggetto vuoto se non è necessario modificarlo
+  */
+  chartUtils = {},
 
   /** container (selettore o elementio DOM), se null viene restituito il codice SVG */
   container = null,
@@ -45,7 +50,7 @@ export async function pie({
   // TODO animazione
   const animazione = false;
 
-  const chartUtils = await chart_init(svgjs_mode);
+  chartUtils = chart_init(chartUtils);
 
   // colori forniti o di default
   colors??= chartUtils.defaults.colors;
