@@ -113,7 +113,7 @@ signalBars({
   barsOffAttr: {
     fill: '#c00',
   },
-  activeBarIndex: 0,
+  activeBars: 1,
   svgClassName: 'test-class'
 });
 

@@ -8570,10 +8570,10 @@ function signalBars({
 
   /**
     se fornito, le barre 'accese' non vengono calcolate, ma si uutilizza questo valore
-    corrisponde all'indice (base `0`) dell'ultima barra da considerare attiva.
+    corrisponde al numero di barre attivate da sinistra verso destra.
     Se presente, `value` può essere omesso ed è comunque ignorato
   */
-  activeBarIndex = null,
+  activeBars = null,
 
   /** Valore da rappresentare */
   value = null,
@@ -8658,7 +8658,7 @@ function signalBars({
       throw '`barsStrokeWidth` must be a number';
     }
 
-    if((value == null || typeof value !== 'number') && (activeBarIndex == null || typeof activeBarIndex !== 'number')) {
+    if((value == null || typeof value !== 'number') && (activeBars == null || typeof activeBars !== 'number')) {
       throw 'At least one of `value` and `activeBarIndex` must be present and it must be a number';
     }
 
@@ -8771,8 +8771,8 @@ function signalBars({
     ranges.sort((a,b) => a - b);
     let lastActiveBarIndex;
 
-    if(activeBarIndex) {
-      lastActiveBarIndex = activeBarIndex;
+    if(activeBars) {
+      lastActiveBarIndex = activeBars - 1;
 
     } else {
       const closestRangeValue = ranges.reduce((prev, curr) => {

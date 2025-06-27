@@ -17,3 +17,4 @@
 2025-06-25T14:25:19.815Z |            2.3.0 | removed the main class in favor of single exported functions to improve tree shaking
 2025-06-26T10:05:40.685Z |            2.3.1 | Fix
 2025-06-26T10:28:12.138Z |            2.3.2 | fix
+2025-06-27T13:03:15.010Z |            2.3.3 | fix

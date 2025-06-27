@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 350 150"><text fill="#051b52" font-family="Roboto Flex" font-size="72" font-weight="700" x="208.8477" y="102.93163125" textLength="141.1523" lengthAdjust="spacingAndGlyphs">3,63</text><g><rect width="28.16953125" height="29.2" x="2" y="118.8" fill="#0b3191" fill-opacity="0.5" stroke="#0a1b45" rx="3" ry="3" stroke-width="4"></rect><rect width="28.16953125" height="58.4" x="44.1695" y="89.6" fill="#0b3191" fill-opacity="0.5" stroke="#0a1b45" rx="3" ry="3" stroke-width="4"></rect><rect width="28.16953125" height="87.6" x="86.3391" y="60.4" fill="#0b3191" fill-opacity="0.5" stroke="#0a1b45" rx="3" ry="3" stroke-width="4"></rect><rect width="28.16953125" height="116.8" x="128.5086" y="31.2" fill="#ffffff" stroke="#0a1b45" rx="3" ry="3" stroke-width="4"></rect><rect width="28.16953125" height="146" x="170.6781" y="2" fill="#ffffff" stroke="#0a1b45" rx="3" ry="3" stroke-width="4"></rect></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 350 150">
+
+  <text fill="#051b52" font-family="Roboto Flex" font-size="72" x="208.8477" font-weight="700"
+    y="102.93163125" textLength="141.1523" lengthAdjust="spacingAndGlyphs">3,63</text>
+  <g>
+    <rect width="28.16953125" height="29.2" x="2" y="118.8" fill="#0b3191" fill-opacity="0.5"
+      stroke="#0a1b45" rx="3" ry="3" stroke-width="4"></rect>
+    <rect width="28.16953125" height="58.4" x="44.1695" y="89.6" fill="#0b3191" fill-opacity="0.5"
+      stroke="#0a1b45" rx="3" ry="3" stroke-width="4"></rect>
+    <rect width="28.16953125" height="87.6" x="86.3391" y="60.4" fill="#0b3191" fill-opacity="0.5"
+      stroke="#0a1b45" rx="3" ry="3" stroke-width="4"></rect>
+    <rect width="28.16953125" height="116.8" x="128.5086" y="31.2" fill="#ffffff" stroke="#0a1b45"
+      rx="3" ry="3" stroke-width="4"></rect>
+    <rect width="28.16953125" height="146" x="170.6781" y="2" fill="#ffffff" stroke="#0a1b45" rx="3"
+      ry="3" stroke-width="4"></rect>
+  </g>
+</svg>
