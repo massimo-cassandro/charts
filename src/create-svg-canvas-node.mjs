@@ -1,3 +1,15 @@
+/*
+  per utilizzo con applicazioni node, di default non utilizzato.
+  Dove necessario rimpiazza la funzione `createSvgCanvas` di default
+  Vedi ./demo/node-demo/index.mjs
+
+  {
+    chartUtils: { createSvgCanvas: createSvgCanvasNode}
+    // ...
+  }
+
+*/
+
 import { createSVGWindow } from 'svgdom';
 import { SVG, registerWindow } from '@svgdotjs/svg.js';
 

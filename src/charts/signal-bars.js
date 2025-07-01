@@ -8,8 +8,9 @@
  */
 
 import { chart_init } from '../utils/init.js';
+import { textToSvgPath } from '../utils/svg-text-to-path.js';
 
-export function signalBars({
+export async function signalBars({
 
   /**
     variabili e funzioni condivise importate da '../utils/init.js' (vedi)
@@ -56,7 +57,7 @@ export function signalBars({
   /** Valore da rappresentare */
   value = null,
 
-  /** etichetta da mostrare a destra o sotto le tacche. Stringa vuota per non avere etichhetta */
+  /** etichetta da mostrare a destra o sotto le tacche. Stringa vuota per non avere etichetta */
   label = null,
 
   /** usa il valore come etichetta se label == null */
@@ -72,6 +73,13 @@ export function signalBars({
   */
   labelFont = null,
   labelFill = '#000',
+
+
+  /** Converte i font in tracciati NB: solo per versioni node */
+  textToPath = false,
+
+  /** path del file font per la conversione in tracciati */
+  labelFontFilePath = null,
 
   /** spazio tra l'etichetta e il grafico */
   textBarsGap = 8,
@@ -183,14 +191,29 @@ export function signalBars({
 
       // =>> calcolo dimensioni del testo per ricavare lo spazio utile per le barre
       // in base al posizionamento dell'etichetta
-      labelFont = {...chartUtils.defaults.fonts, ...(labelFont??{}) };
-      // larghezza testo
-      labelEl = svgCanvas.plain(label).font({
-        fill: labelFill,
-        ...labelFont,
-        // 'text-anchor': labelPosition === 'right'? 'start' : 'middle'
-      });
-      label_bbox = labelEl.node.getBoundingClientRect();
+
+      // =>> text to path
+      if(textToPath) {
+        const { pathData/* , pathElementString */ } = await textToSvgPath(labelFontFilePath, label, labelFont.size);
+        labelEl = svgCanvas.path(pathData).attr({fill: labelFill});
+
+
+
+      } else {
+
+        labelFont = {...chartUtils.defaults.font, ...(labelFont??{}) };
+        // larghezza testo
+        labelEl = svgCanvas.plain(label).font({
+          fill: labelFill,
+          ...labelFont,
+          // 'text-anchor': labelPosition === 'right'? 'start' : 'middle'
+        });
+
+      }
+
+
+      // label_bbox = labelEl.node.getBoundingClientRect();
+      label_bbox = labelEl.bbox();
 
       if(labelPosition === 'right') {
         labelX = width - label_bbox.width;
@@ -206,12 +229,16 @@ export function signalBars({
       }
 
       // posizionamento etichetta
-      labelEl.move(chartUtils.truncateDecimal(labelX), chartUtils.truncateDecimal(labelY))
-        .attr({
+      labelEl.move(chartUtils.truncateDecimal(labelX), chartUtils.truncateDecimal(labelY));
+
+      if(!textToPath) {
+
+        labelEl.attr({
           textLength: chartUtils.truncateDecimal(label_bbox.width),
           lengthAdjust:'spacingAndGlyphs',
           // 'dominant-baseline': labelPosition === 'right'? 'middle' : 'hanging'
         });
+      }
 
       if(labelClassName) {
         labelEl.addClass(labelClassName);

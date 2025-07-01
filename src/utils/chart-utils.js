@@ -1,22 +1,26 @@
-const utils = {};
+// raccolta di utilità
+// vengono ampliate da init.js e condivise in ogni grafico
 
-utils.truncateDecimal = (number, decimals = 4) => {
+
+const chartUtils = {};
+
+chartUtils.truncateDecimal = (number, decimals = 4) => {
   return +parseFloat((number).toFixed(decimals));
 };
 
-utils.toRadians = degrees_angle => degrees_angle * Math.PI / 180.0;
+chartUtils.toRadians = degrees_angle => degrees_angle * Math.PI / 180.0;
 
 // transform polar coordinates (center + radius) to cartesian ones (x, y)
-utils.polarToCartesian = (degrees_angle, circleCenter, circleRadius) => {
-  const radians = utils.toRadians(degrees_angle);
+chartUtils.polarToCartesian = (degrees_angle, circleCenter, circleRadius) => {
+  const radians = chartUtils.toRadians(degrees_angle);
 
   return {
-    x: utils.truncateDecimal(Math.abs(circleCenter.x + circleRadius * Math.cos(radians))),
-    y: utils.truncateDecimal(Math.abs(circleCenter.y - circleRadius * Math.sin(radians)))
+    x: chartUtils.truncateDecimal(Math.abs(circleCenter.x + circleRadius * Math.cos(radians))),
+    y: chartUtils.truncateDecimal(Math.abs(circleCenter.y - circleRadius * Math.sin(radians)))
   };
 };
 
-utils.classnames = (...args) => {
+chartUtils.classnames = (...args) => {
   return args.filter(Boolean).join(' ');
 };
 
@@ -24,7 +28,7 @@ utils.classnames = (...args) => {
 
 // return the coordinates an arc `path` element
 // where start_angle is the starting point and percentage is the length % of the arc against max_angle
-utils.calcArcCoords = (options) => {
+chartUtils.calcArcCoords = (options) => {
 
   const default_options = {
     start_angle   : 0,
@@ -63,15 +67,15 @@ utils.calcArcCoords = (options) => {
 
   return {
     arc_length    : arc_length,
-    start         : utils.polarToCartesian(options.start_angle, options.center, options.radius),
-    end           : utils.polarToCartesian(end_angle, options.center, options.radius),
+    start         : chartUtils.polarToCartesian(options.start_angle, options.center, options.radius),
+    end           : chartUtils.polarToCartesian(end_angle, options.center, options.radius),
   };
 
 };
 
 
-utils.calcAttrD = (options) => { // same options of calcArcCoords
-  const points = utils.calcArcCoords(options);
+chartUtils.calcAttrD = (options) => { // same options of calcArcCoords
+  const points = chartUtils.calcArcCoords(options);
 
   return [
     `M${points.start.x},${points.start.y}`,
@@ -84,7 +88,7 @@ utils.calcAttrD = (options) => { // same options of calcArcCoords
 };
 
 
-utils.getElementFromContainer = container => {
+chartUtils.getElementFromContainer = container => {
   let containerElement = null;
 
   if(container) {
@@ -101,5 +105,5 @@ utils.getElementFromContainer = container => {
 };
 
 
-export { utils };
+export { chartUtils };
 

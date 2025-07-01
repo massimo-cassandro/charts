@@ -181,8 +181,8 @@ export function bars({
     colors??= chartUtils.defaults.colors;
 
     // fonts
-    labelsFont = {...chartUtils.defaults.fonts, ...(labelsFont??{}) };
-    valuesFont = {...chartUtils.defaults.fonts, ...(valuesFont??{}) };
+    labelsFont = {...chartUtils.defaults.font, ...(labelsFont??{}) };
+    valuesFont = {...chartUtils.defaults.font, ...(valuesFont??{}) };
 
     // somma di tutti i valori per calcolo persentuale
     const totValues = values.reduce((tot, current) => tot + current, 0);

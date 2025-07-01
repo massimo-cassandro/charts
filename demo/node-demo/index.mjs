@@ -1,10 +1,9 @@
 /* eslint-disable no-console */
 import { bars, pie, signalBars }  from '../../src/index.js';
+import { createSvgCanvasNode } from '../../src/create-svg-canvas-node.mjs';
 import * as fs_promises from 'node:fs/promises';
 import path from 'node:path';
 
-
-import { createSvgCanvasNode } from './create-svg-canvas-node.mjs';
 
 console.clear();
 
@@ -85,20 +84,23 @@ try {
 
 // --------------------------------------------
 
-const signal_bars_svg = signalBars({
+// signal bars con testo cinvertito in tracciati
+const signal_bars_svg = await signalBars({
   ...base_cfg,
   height: 150,
   width: 350,
   ranges: [1,2,3,4,5],
+  textToPath: true,
+  labelFontFilePath: '../Roboto_Condensed/static/RobotoCondensed-Bold.ttf',
   labelFont: {
-    family: 'Roboto Flex',
+    // family: 'Roboto Flex',
     size: 72,
     // stretch: 'normal',
     // style: 'italic',
     // variant: 'normal',
-    weight: 700
+    // weight: 700
   },
-  labelFill: '#051b52',
+  labelFill: '#04780a',
   barsStrokeWidth: 4,
   barsOnAttr: {
     fill: '#0b3191',

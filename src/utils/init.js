@@ -1,36 +1,33 @@
-import { utils } from './utilities.js';
+import { chartUtils } from './chart-utils.js';
 import { default_colors } from './default-chart-colors.js';
 import { createSvgCanvas } from './create-svg-canvas.js';
 
 export function chart_init(customUtils = {}) {
 
-  const chartUtils = {
-    ...customUtils,
-    ...utils
-  };
+  chartUtils.defaults = {};
 
-  chartUtils.defaults = {
+  chartUtils.defaults.colors = customUtils.defaults.colors?? Object.values(default_colors);
+  chartUtils.defaults.font = {
 
-    ...(customUtils.defaults?? {}),
-
+    // pattern per defaults.font
+    // i valori commentati sono quelli di default
+    // se non vanno modificati, non serve impostarli
     ...{
-      colors: Object.values(default_colors),
-
-      // i valori commentati sono quelli di default
-      // se non vanno modificati è inutile impostarli
-      fonts: {
-        // family: 'sans-serif',
-        // size: 14,
-        // stretch: 'normal',
-        // style: 'normal',
-        // variant: 'normal',
-        // weight: 400
-      }
-    }
+      // family: 'sans-serif',
+      // size: 14,
+      // stretch: 'normal',
+      // style: 'normal',
+      // variant: 'normal',
+      // weight: 400
+    },
+    ...(customUtils.defaults.font?? {})
   };
+
 
   chartUtils.createSvgCanvas = customUtils.createSvgCanvas?? createSvgCanvas;
 
+
+  // console.log(chartUtils);
 
   // DA' PROBLEMI CON WEBPACK
   // switch (svgjs_mode) {

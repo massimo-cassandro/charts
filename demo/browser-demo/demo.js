@@ -1,6 +1,16 @@
 import { bars, pie, signalBars } from './charts-demo.js';
 
-const base_cfg = {};
+const base_cfg = {
+  chartUtils: {
+    defaults: {
+      font: {
+        family: 'Roboto Condensed',
+      },
+      // colors: ['#036', '#c00', '#ddd', '#fc0']
+    }
+
+  }
+};
 
 const testValues = {
   'Label 1': 120,
@@ -26,7 +36,7 @@ const barsOpts = {
   // barsHeight: 40,
   // barsCornerRadius: 5,
   labelsFont: {
-    family: 'Roboto Flex',
+    // family: 'Roboto Condensed',
     size: 16,
     // stretch: 'normal',
     // style: 'normal',
@@ -34,7 +44,7 @@ const barsOpts = {
     weight: 800
   },
   valuesFont: {
-    family: 'Roboto Flex',
+    // family: 'Roboto Condensed',
     size: 14,
     // stretch: 'normal',
     style: 'italic',
@@ -63,7 +73,7 @@ const signalBarsOpts = {
   height: 250,
   ranges: [1,2,3,4,5],
   labelFont: {
-    family: 'Roboto Flex',
+    // family: 'Roboto Condensed',
     size: 72,
     // stretch: 'normal',
     // style: 'italic',
