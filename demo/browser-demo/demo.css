@@ -1,4 +1,5 @@
 body {
+  padding: 2rem;
   font-family: sans-serif;
 }
 .charts-wrapper {
@@ -41,16 +42,30 @@ body {
   }
 }
 
+svg {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  background-color: #fff;
+}
+
+
 
 /*
 svg {
-  outline: 1px dotted #f00;
-}
-
-text {
   outline: 1px dotted rgb(28, 86, 246);
 }
 
-g {
-  outline: 1px dotted rgb(6, 101, 16);
-} */
+text {
+  outline: 1px dotted #c00;
+}
+
+g:not(.debug-info) {
+  outline: .2px dotted rgb(6, 101, 16);
+  outline-offset: 0;
+  g {
+    outline: none;
+  }
+}
+*/
+

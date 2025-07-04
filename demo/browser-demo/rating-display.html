@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="data:;base64,=">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Rating Display demo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./demo.css" type="text/css" media="all">
+    <style>
+    body { background-color: #ddd;}
+    </style>
+  </head>
+  <body>
+    <h1>Rating Display demo</h1>
+
+    <div id="rd-demo"></div>
+
+    <script type="module">
+      import { ratingDisplay } from './charts-demo.js';
+
+      ratingDisplay({
+        debug: true,
+        container: '#rd-demo',
+        scale: 5,
+        displayValueForceCenter: true,
+
+        displayValue: 3.2,
+        scaleColors: null,
+
+        displayArc: {
+          fill: '#efefef',
+          strokeWidth: null,
+          strokeColor: null,
+          className: null,
+        },
+
+        displayLabel: [
+          {
+            label: 'Lorem ipsum',
+            font: {
+              family: 'Roboto Condensed',
+              size: 18,
+              // stretch: 'normal',
+              // style: 'italic',
+              // variant: 'normal',
+              weight: 700
+            },
+            fill: '#000',
+            // fontFilePath: path
+          },
+          {
+            label: 'dolor sit amet',
+            font: {
+              family: 'Roboto Condensed',
+              size: 12,
+              // stretch: 'normal',
+              // style: 'italic',
+              // variant: 'normal',
+              weight: 300
+            },
+            fill: '#666',
+            // fontFilePath: path,
+          }
+        ],
+        miniDisplay: [
+          {
+            position: 'sx',
+            value: 3.1,
+            type: 'gauge', // gauge = mini tachimetro, value: mostra il valore indicato in value
+            mdLabel: [
+              {
+                label: 'md#1',
+                font: {
+                  family: 'Roboto Condensed',
+                  size: 14,
+                  // stretch: 'normal',
+                  // style: 'italic',
+                  // variant: 'normal',
+                  weight: 400
+                },
+                fill: '#333',
+                // fontFilePath: path,
+              },
+              {
+                label: 'xyz',
+                font: {
+                  family: 'Roboto Condensed',
+                  size: 12,
+                  // stretch: 'normal',
+                  // style: 'italic',
+                  // variant: 'normal',
+                  weight: 300
+                },
+                fill: '#666',
+                // fontFilePath: path,
+              },
+            ],
+            mdArc: {
+              // fill: '#ddd',
+              strokeWidth: 1,
+              strokeColor: '#666',
+              className: null,
+            }
+          },
+          {
+            position: 'dx',
+            value: 4,
+            type: 'value', // gauge = mini tachimetro, value: mostra il valore indicato in value
+            typeLabelFont: {
+              label: null,
+              font: {
+                family: 'Roboto Condensed',
+                size: 32,
+                // stretch: 'normal',
+                // style: 'italic',
+                // variant: 'normal',
+                weight: 700
+              },
+              fill: '#036',
+              // fontFilePath: path,
+            },
+            mdLabel: [{
+              label: 'md#2',
+              font: {
+                family: 'Roboto Condensed',
+                size: 14,
+                // stretch: 'normal',
+                // style: 'italic',
+                // variant: 'normal',
+                weight: 400
+              },
+              fill: '#333',
+              // fontFilePath: path,
+            }],
+            mdArc: {
+              // fill: '#ddd',
+              strokeWidth: 2,
+              strokeColor: '#036',
+              className: null,
+            }
+          }
+        ],
+        miniDisplayTopMargin: 0,
+
+      });
+
+    </script>
+  </body>
+</html>

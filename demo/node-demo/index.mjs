@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { bars, pie, signalBars }  from '../../src/index.js';
+import { bars, pie, signalBars, ratingDisplay }  from '../../src/index.js';
 import { createSvgCanvasNode } from '../../src/create-svg-canvas-node.mjs';
 import * as fs_promises from 'node:fs/promises';
 import path from 'node:path';
@@ -17,7 +17,8 @@ const testValues = {
 
 // ridefinizione di createSvgCanvas in modo che sia utilizzata la versione per node
 const base_cfg = {
-  chartUtils: { createSvgCanvas: createSvgCanvasNode}
+  chartUtils: { createSvgCanvas: createSvgCanvasNode},
+  textToPath: true,
 };
 const output_path = new URL(import.meta.resolve('./demo-node-output')).pathname;
 
@@ -84,13 +85,11 @@ try {
 
 // --------------------------------------------
 
-// signal bars con testo cinvertito in tracciati
 const signal_bars_svg = await signalBars({
   ...base_cfg,
   height: 150,
   width: 350,
   ranges: [1,2,3,4,5],
-  textToPath: true,
   labelFontFilePath: '../Roboto_Condensed/static/RobotoCondensed-Bold.ttf',
   labelFont: {
     // family: 'Roboto Flex',
@@ -122,6 +121,49 @@ try {
   console.error(err);
 }
 
+
+
+// --------------------------------------------
+
+const ratingDisplay_svg = await ratingDisplay({
+  ...base_cfg,
+
+  // debug: true,
+
+  displayValue: 3.1,
+  scaleColors: null,
+  scale: 4,
+  displayValueForceCenter: false,
+
+
+  displayLabel: [
+    {
+      label: 'xyz',
+      font: {
+        size: 18,
+      },
+      fill: '#000',
+      fontFilePath: '../Roboto_Condensed/static/RobotoCondensed-Bold.ttf'
+    },
+    {
+      label: '(qwerty)',
+      font: {
+        size: 12,
+      },
+      fill: '#666',
+      fontFilePath: '../Roboto_Condensed/static/RobotoCondensed-Regular.ttf'
+    }
+  ],
+  displayLabelTopMargin: 8,
+
+
+});
+
+try {
+  await fs_promises.writeFile(path.join(output_path, 'rating-display.svg'), ratingDisplay_svg);
+} catch (err) {
+  console.error(err);
+}
 
 
 // --------------------------------------------

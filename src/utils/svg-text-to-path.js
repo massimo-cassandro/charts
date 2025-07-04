@@ -39,7 +39,7 @@ export async function textToSvgPath(fontUrl, text, fontSize) {
 
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.error('textToSvgPath - font loading error: ', err);
+    console.error('textToSvgPath - font loading error:', err);
     throw err;
   }
 }

@@ -69,13 +69,13 @@ export async function signalBars({
   /**
     Impostazioni font e colori per le etichette
     Impostare solo se non si vogliono usare i colori di default
-    se impostato, è un oggetto analogo a quello definito in src/utils/config-default.js
+    se impostato, è un oggetto analogo a quello definito in src/utils/init.js
   */
   labelFont = null,
   labelFill = '#000',
 
 
-  /** Converte i font in tracciati NB: solo per versioni node */
+  /** Converte i font in tracciati NB: da testare per versioni web */
   textToPath = false,
 
   /** path del file font per la conversione in tracciati */
@@ -160,8 +160,8 @@ export async function signalBars({
     }
 
     // dimensioni svg
-    width = width || (containerElement? chartUtils.truncateDecimal(containerElement.clientWidth) : null);
-    height = height || (containerElement? chartUtils.truncateDecimal(containerElement.clientHeight) : null);
+    width = width || (containerElement? containerElement.clientWidth : null);
+    height = height || (containerElement? containerElement.clientHeight : null);
 
 
     if(barsGap == null) {
@@ -194,10 +194,8 @@ export async function signalBars({
 
       // =>> text to path
       if(textToPath) {
-        const { pathData/* , pathElementString */ } = await textToSvgPath(labelFontFilePath, label, labelFont.size);
+        const { pathData/* , pathElementString */ } = await textToSvgPath(labelFontFilePath, label, labelFont.size?? 16);
         labelEl = svgCanvas.path(pathData).attr({fill: labelFill});
-
-
 
       } else {
 
@@ -229,12 +227,12 @@ export async function signalBars({
       }
 
       // posizionamento etichetta
-      labelEl.move(chartUtils.truncateDecimal(labelX), chartUtils.truncateDecimal(labelY));
+      labelEl.move(labelX, labelY);
 
       if(!textToPath) {
 
         labelEl.attr({
-          textLength: chartUtils.truncateDecimal(label_bbox.width),
+          textLength: label_bbox.width,
           lengthAdjust:'spacingAndGlyphs',
           // 'dominant-baseline': labelPosition === 'right'? 'middle' : 'hanging'
         });
@@ -293,8 +291,8 @@ export async function signalBars({
       const barIsOn = idx <= lastActiveBarIndex;
 
       const bar = bar_group.rect({
-        x: chartUtils.truncateDecimal(barX),
-        y: chartUtils.truncateDecimal(barY),
+        x: barX,
+        y: barY,
         width: barWidth,
         height: barHeight,
         ...(barIsOn? barsOnAttr : barsOffAttr),

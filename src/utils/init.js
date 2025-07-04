@@ -4,9 +4,9 @@ import { createSvgCanvas } from './create-svg-canvas.js';
 
 export function chart_init(customUtils = {}) {
 
-  chartUtils.defaults = {};
+  chartUtils.defaults??= {};
 
-  chartUtils.defaults.colors = customUtils.defaults.colors?? Object.values(default_colors);
+  chartUtils.defaults.colors = customUtils.defaults?.colors?? Object.values(default_colors);
   chartUtils.defaults.font = {
 
     // pattern per defaults.font
@@ -20,7 +20,7 @@ export function chart_init(customUtils = {}) {
       // variant: 'normal',
       // weight: 400
     },
-    ...(customUtils.defaults.font?? {})
+    ...(customUtils.defaults?.font?? {})
   };
 
 

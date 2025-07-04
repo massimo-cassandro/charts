@@ -8,7 +8,8 @@ chartUtils.truncateDecimal = (number, decimals = 4) => {
   return +parseFloat((number).toFixed(decimals));
 };
 
-chartUtils.toRadians = degrees_angle => degrees_angle * Math.PI / 180.0;
+chartUtils.toRadians = degrees_angle => (degrees_angle * Math.PI) / 180.0;
+// chartUtils.toDeg = radians_angle => (radians_angle * 180.0 ) / Math.PI;
 
 // transform polar coordinates (center + radius) to cartesian ones (x, y)
 chartUtils.polarToCartesian = (degrees_angle, circleCenter, circleRadius) => {

@@ -66,7 +66,7 @@ export function bars({
   /**
     Impostazioni font per le etichette e i valori
     Impostare solo se non si vogliono usare i colori di default
-    se impostato è un oggetto analogo a quello definito in src/utils/config-default.js
+    se impostato è un oggetto analogo a quello definito in src/utils/init.js
     Possono essere impostati solo i valori che si vogliono modificare
   */
   labelsFont = null,
@@ -147,8 +147,8 @@ export function bars({
     }
 
     // dimensioni del grafico
-    width = width || (containerElement? chartUtils.truncateDecimal(containerElement.clientWidth) : null);
-    height = height || (containerElement? chartUtils.truncateDecimal(containerElement.clientHeight) : null);
+    width = width || (containerElement? containerElement.clientWidth : null);
+    height = height || (containerElement? containerElement.clientHeight : null);
 
 
     if(barsGap == null) {
@@ -252,8 +252,8 @@ export function bars({
 
         const bbox = labelEl.bbox();
 
-        labelEl.move(labelX, chartUtils.truncateDecimal(labelY - (bbox.height/2)))
-          .attr({textLength: chartUtils.truncateDecimal(bbox.width), lengthAdjust:'spacingAndGlyphs'});
+        labelEl.move(labelX, labelY - (bbox.height/2))
+          .attr({textLength: bbox.width, lengthAdjust:'spacingAndGlyphs'});
 
         return [bbox, labelEl];
       };
@@ -303,7 +303,7 @@ export function bars({
 
     // =>> riposizionamento `labels_elements` (prima dell'aggiunta di `textBarsGap`)
     labels_elements.forEach(l => {
-      l.ax(chartUtils.truncateDecimal(toRight? max_labels_width : width - max_labels_width));
+      l.ax(toRight? max_labels_width : width - max_labels_width);
     });
 
 
@@ -323,11 +323,11 @@ export function bars({
     let barY = barsStrokeWidth / 2;
     values.forEach((v, idx) => {
 
-      const barWidth = chartUtils.truncateDecimal((v / maxBarsValue * maxBarsWidth) - barsStrokeWidth),
+      const barWidth = (v / maxBarsValue * maxBarsWidth) - barsStrokeWidth,
         barX = toRight? max_labels_width : width - barWidth - max_labels_width,
         bar = svgCanvas.rect({
-          x: chartUtils.truncateDecimal(barX),
-          y: chartUtils.truncateDecimal(barY),
+          x: barX,
+          y: barY,
           width: barWidth,
           height: barsHeight,
           fill: colors[idx]?? '#ccc',
